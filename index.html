@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Employee Management</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background: #f4f6f9;
+    margin:0;
+    padding:0;
+}
+
+.container{
+    width: 80%;
+    margin: 40px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+h2{
+    text-align:center;
+    color:#333;
+}
+
+form{
+    margin-bottom:30px;
+}
+
+input{
+    width:100%;
+    padding:10px;
+    margin:8px 0;
+    border:1px solid #ccc;
+    border-radius:5px;
+}
+
+button{
+    background:#007bff;
+    color:white;
+    padding:10px 20px;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#0056b3;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:20px;
+}
+
+table, th, td{
+    border:1px solid #ddd;
+}
+
+th{
+    background:#007bff;
+    color:white;
+    padding:12px;
+}
+
+td{
+    padding:10px;
+    text-align:center;
+}
+
+tr:nth-child(even){
+    background:#f2f2f2;
+}
+
+a{
+    text-decoration:none;
+    padding:6px 10px;
+    border-radius:5px;
+    color:white;
+}
+
+.edit{
+    background:green;
+}
+
+.delete{
+    background:red;
+}
+
+.message{
+    background:#d4edda;
+    color:#155724;
+    padding:10px;
+    border-radius:5px;
+    margin:10px 0;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+<h2>Employee Management System</h2>
+
+<form action="/add" method="POST">
+    <input type="text" name="name" placeholder="Enter Name">
+    <input type="text" name="email" placeholder="Enter Email">
+    <input type="text" name="department" placeholder="Enter Department">
+    <input type="text" name="salary" placeholder="Enter Salary">
+    <button type="submit">Add Employee</button>
+</form>
+
+{% with messages = get_flashed_messages() %}
+{% for msg in messages %}
+<div class="message">{{ msg }}</div>
+{% endfor %}
+{% endwith %}
+
+<table>
+<tr>
+<th>ID</th>
+<th>Name</th>
+<th>Email</th>
+<th>Department</th>
+<th>Salary</th>
+<th>Action</th>
+</tr>
+
+{% for row in employees %}
+<tr>
+<td>{{ row[0] }}</td>
+<td>{{ row[1] }}</td>
+<td>{{ row[2] }}</td>
+<td>{{ row[3] }}</td>
+<td>{{ row[4] }}</td>
+<td>
+<a class="edit" href="/edit/{{ row[0] }}">Edit</a>
+<a class="delete" href="/delete/{{ row[0] }}">Delete</a>
+</td>
+</tr>
+{% endfor %}
+
+</table>
+
+</div>
+
+</body>
+</html>

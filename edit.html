@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Edit Employee</title>
+
+<style>
+body{
+    font-family: Arial;
+    background:#f4f6f9;
+}
+
+.container{
+    width:40%;
+    margin:80px auto;
+    background:white;
+    padding:30px;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+h2{
+    text-align:center;
+}
+
+input{
+    width:100%;
+    padding:10px;
+    margin:10px 0;
+    border:1px solid #ccc;
+    border-radius:5px;
+}
+
+button{
+    width:100%;
+    padding:10px;
+    background:#28a745;
+    color:white;
+    border:none;
+    border-radius:5px;
+}
+
+button:hover{
+    background:#218838;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+<h2>Edit Employee</h2>
+
+<form action="/update/{{ emp[0] }}" method="POST">
+    <input type="text" name="name" value="{{ emp[1] }}">
+    <input type="text" name="email" value="{{ emp[2] }}">
+    <input type="text" name="department" value="{{ emp[3] }}">
+    <input type="text" name="salary" value="{{ emp[4] }}">
+    <button type="submit">Update Employee</button>
+</form>
+
+</div>
+
+</body>
+</html>
